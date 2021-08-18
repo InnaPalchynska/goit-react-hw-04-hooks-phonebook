@@ -1,9 +1,9 @@
-const Filter = ({ filter, onChange }) => {
+const Filter = ({ contactFilter, onChange }) => {
   return (
     <input
       type="text"
       onChange={target => onChange(target.target.value)}
-      value={filter}
+      value={contactFilter}
       placeholder="Enter name "
     />
   );
