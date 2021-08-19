@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import ContactForm from './components/contactForm/ContactForm';
 import ContactList from './components/contactList/ContactList';
@@ -35,8 +35,12 @@ export default function App() {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
 
-  const filtredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(contactFilter.toLowerCase()),
+  const filtredContacts = useMemo(
+    () =>
+      contacts.filter(contact =>
+        contact.name.toLowerCase().includes(contactFilter.toLowerCase()),
+      ),
+    [contactFilter, contacts],
   );
 
   return (
